@@ -68,6 +68,6 @@ export async function getStaticProps() {
         props: {
             spreadSheetData: response,
         },
-        // revalidate: 1,
+        revalidate: 1,
     };
 }

@@ -1,29 +1,23 @@
 import { google } from 'googleapis';
 import axios from 'axios';
 
-async function addressToCoord(address) {
-    try {
-        const response = await axios(
-            `https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=${encodeURIComponent(
-                address,
-            )}`,
-            {
-                method: 'GET',
-                headers: {
-                    'X-NCP-APIGW-API-KEY-ID':
-                        process.env.NEXT_NAVER_API_CLIENT_ID,
-                    'X-NCP-APIGW-API-KEY':
-                        process.env.NEXT_NAVER_API_CLIENT_SECRET,
-                },
-            },
+function makeCoords(degree) {
+    const degreeArray = degree.split(',');
+    const northDegree = degreeArray[0].trim();
+    const eastDegree = degreeArray[1].trim();
+
+    const dmsToCoord = (DMS) => {
+        const coordArray = DMS.replace('″', '').replace('"', '').split(/[°′']/);
+        return (
+            Number(coordArray[0]) +
+            Number(coordArray[1]) / 60 +
+            Number(coordArray[2]) / (60 * 60)
         );
-        return {
-            lng: response.data.addresses[0].x,
-            lat: response.data.addresses[0].y,
-        };
-    } catch (error) {
-        return error.response.data.reason;
-    }
+    };
+    return {
+        lat: dmsToCoord(northDegree.replace('N', '')),
+        lng: dmsToCoord(eastDegree.replace('E', '')),
+    };
 }
 
 export async function getSpreadSheetData() {
@@ -54,12 +48,10 @@ export async function getSpreadSheetData() {
                 });
                 return instance;
             });
-            return await Promise.all(
-                result.map(async (row) => {
-                    const coord = await addressToCoord(row.위치);
-                    return { ...row, ...coord };
-                }),
-            );
+            return result.map((row) => {
+                const coord = makeCoords(row['위경도']);
+                return { ...row, ...coord };
+            });
         }
     } catch (err) {
         console.log(err);

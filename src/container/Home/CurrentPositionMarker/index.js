@@ -33,8 +33,6 @@ function CurrentPositionMarker({ state, setState }) {
             }));
         }
     };
-    // setState(state);
-    // console.log(state);
 
     useEffect(() => {
         findMyLocation();

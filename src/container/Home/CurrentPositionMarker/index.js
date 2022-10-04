@@ -5,7 +5,7 @@ function CurrentPositionMarker({ state, setState }) {
     const findMyLocation = async () => {
         if (navigator.geolocation) {
             // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-            navigator.geolocation.getCurrentPosition(
+            navigator.geolocation.watchPosition(
                 (position) => {
                     setState((prev) => ({
                         ...prev,

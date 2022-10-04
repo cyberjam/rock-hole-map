@@ -36,7 +36,7 @@ function CurrentPositionMarker({ state, setState }) {
 
     useEffect(() => {
         findMyLocation();
-    }, []);
+    }, [state]);
 
     return (
         <>

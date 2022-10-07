@@ -47,7 +47,7 @@ export default function Home({ spreadSheetData }) {
                         onToggleClick={handleDrawerEvent}
                     /> */}
 
-                    {currentPositionState.center && (
+                    {currentPositionState.center.lat && (
                         <CurrentPositionMarker
                             state={currentPositionState}
                             setState={setCurrentPositionState}

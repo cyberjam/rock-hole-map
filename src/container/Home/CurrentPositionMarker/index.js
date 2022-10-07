@@ -63,6 +63,7 @@ function CurrentPositionMarker({ locationId, setLocationId }) {
                     size={25}
                 />
             )}
+            {state.center.lat}
         </>
     );
 }

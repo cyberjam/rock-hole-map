@@ -1,13 +1,7 @@
 import { React, useEffect, useState } from 'react';
 import Marker from '../../../components/NaverMap/Marker';
 
-function CurrentPositionMarker({
-    location,
-    state,
-    setState,
-    locationId,
-    setLocationId,
-}) {
+function CurrentPositionMarker({ state, setState, locationId, setLocationId }) {
     // const [state, setState] = useState({
     //     center: {
     //         lat: 33.0,
@@ -63,10 +57,9 @@ function CurrentPositionMarker({
         <>
             {' '}
             {state.center.lat}
-            {location}
             {!state.isLoading && state.center && (
                 <Marker
-                    position={location}
+                    position={state.center}
                     src={'https://i.ibb.co/F4q5WKP/image.png'}
                     size={25}
                 />

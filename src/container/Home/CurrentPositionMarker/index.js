@@ -16,12 +16,13 @@ function CurrentPositionMarker() {
             // GeoLocation을 이용해서 접속 위치를 얻어옵니다
             navigator.geolocation.watchPosition(
                 (position) => {
+                    const center = {
+                        lat: position.coords.latitude, // 위도
+                        lng: position.coords.longitude, // 경도
+                    };
                     setState((prev) => ({
                         ...prev,
-                        center: {
-                            lat: position.coords.latitude, // 위도
-                            lng: position.coords.longitude, // 경도
-                        },
+                        center,
                         isLoading: false,
                     }));
                     alert(state.center.lat);

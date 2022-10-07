@@ -1,14 +1,22 @@
-# Public Home
+# Rock Hole Map
+
+경북 상주 바위 구멍 유적 위치를 지도에 나타내어 직접 찾아가며 탐사를 할 수 있도록 제작.
+
+위치 데이터는 아래 도서에서 발췌. (지도 시각화 이후 위치 데이터 오류 제보로 개정 예정)
+<img src="http://image.kyobobook.co.kr/images/book/xlarge/335/x9791168363335.jpg" width="40%" title="[도서] 경북 상주지역의 바위구멍 유적" alt="[도서] 경북 상주지역의 바위구멍 유적"></img>
+
+저자는 유물의 가치를 인정받지 못한 채 널브러져있는 바위 구멍 유적들이 안타까워 이를 소개하고 현황을 기록한 책을 집필.
+집필하는 도중에도 크고 작은 공사로 사람들의 무관심 속에 사라져간 바위 구멍 유적.
+
+바위 구멍 지도 또한 독자들의 관심과 발자국으로 유적이 보존되길 바라는 마음으로 제작.
+현재 저자 페이스북에서 독자들에게 배포.
 
 ### 적용된 라이브러리/프레임워크/Tool
 
 -   NextJS
 -   Styled-Componets
--   Jest
 -   Naver-Map v5
--   Redux X 사용목적이 불문명
 -   Prettier
--   esLint X 과하다고 생각됨(추후 의논후 결정)
 
 ### 폴더구조
 
@@ -19,18 +27,8 @@
 │  └─Home
 ├─hooks
 ├─images
+├─lib
 ├─pages
 │  └─api
 └─utils
 ```
-
--   components : 중복으로 사용되는 컴포넌트
--   container: `관심사`에 따라 한번만 사용되는 컴포넌트
--   pages: route 기능으로 상용됨. container와 1대1 매칭시키는걸 선호! (안될때가 더 많음)
--   hooks: `CustomHook`제작하여 구성
--   images: Static 이미지 파일
--   utils: 도움되는 기능들
-
-### 아키텍쳐
-
-![아키텍쳐](./public/assets/1.png)

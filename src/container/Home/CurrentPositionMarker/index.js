@@ -1,15 +1,15 @@
 import { React, useEffect, useState } from 'react';
 import Marker from '../../../components/NaverMap/Marker';
 
-function CurrentPositionMarker({ locationId, setLocationId }) {
-    const [state, setState] = useState({
-        center: {
-            lat: 33.0,
-            lng: 126.570667,
-        },
-        errMsg: null,
-        isLoading: true,
-    });
+function CurrentPositionMarker({ state, setState, locationId, setLocationId }) {
+    // const [state, setState] = useState({
+    //     center: {
+    //         lat: 33.0,
+    //         lng: 126.570667,
+    //     },
+    //     errMsg: null,
+    //     isLoading: true,
+    // });
 
     const findMyLocation = () => {
         if (navigator.geolocation) {

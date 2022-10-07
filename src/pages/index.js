@@ -47,9 +47,8 @@ export default function Home({ spreadSheetData }) {
                     /> */}
 
                     <CurrentPositionMarker
-                        // state={currentPositionState}
-                        // setState={setCurrentPositionState}
-
+                        state={currentPositionState}
+                        setState={setCurrentPositionState}
                         locationId={locationId}
                         setLocationId={setLocationId}
                     ></CurrentPositionMarker>

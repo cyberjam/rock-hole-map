@@ -15,6 +15,7 @@ function CurrentPositionMarker({ state, setState }) {
                         },
                         isLoading: false,
                     }));
+                    alert(state.center.lat);
                 },
                 (err) => {
                     setState((prev) => ({

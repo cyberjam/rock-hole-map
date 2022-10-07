@@ -56,6 +56,7 @@ function CurrentPositionMarker({ locationId, setLocationId }) {
     return (
         <>
             {' '}
+            {state.center.lat}
             {!state.isLoading && (
                 <Marker
                     position={state.center}
@@ -63,7 +64,6 @@ function CurrentPositionMarker({ locationId, setLocationId }) {
                     size={25}
                 />
             )}
-            {state.center.lat}
         </>
     );
 }

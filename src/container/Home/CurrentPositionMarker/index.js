@@ -1,7 +1,16 @@
 import { React, useEffect, useState } from 'react';
 import Marker from '../../../components/NaverMap/Marker';
 
-function CurrentPositionMarker({ state, setState }) {
+function CurrentPositionMarker() {
+    const [state, setState] = useState({
+        center: {
+            lat: 33.0,
+            lng: 126.570667,
+        },
+        errMsg: null,
+        isLoading: true,
+    });
+
     const findMyLocation = async () => {
         if (navigator.geolocation) {
             // GeoLocation을 이용해서 접속 위치를 얻어옵니다
@@ -15,7 +24,7 @@ function CurrentPositionMarker({ state, setState }) {
                         },
                         isLoading: false,
                     }));
-                    alert(position.coords.latitude);
+                    alert(state.center.lat);
                 },
                 (err) => {
                     setState((prev) => ({

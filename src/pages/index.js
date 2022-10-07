@@ -43,12 +43,9 @@ export default function Home({ spreadSheetData }) {
                         hide={hide}
                         onToggleClick={handleDrawerEvent}
                     /> */}
-                    {currentPositionState.center && (
-                        <CurrentPositionMarker
-                            state={currentPositionState}
-                            setState={setCurrentPositionState}
-                        ></CurrentPositionMarker>
-                    )}
+
+                    <CurrentPositionMarker></CurrentPositionMarker>
+
                     {HomeBucket.map((data) => {
                         return (
                             <HomeMarker

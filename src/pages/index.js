@@ -38,6 +38,7 @@ export default function Home({ spreadSheetData }) {
                 src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_MAP_KEY}`}
             ></Script>
             <main>
+                <p>{currentPositionState.center.lat}</p>
                 <NaverMap>
                     {/* <Header /> */}
                     {/* <Drawer

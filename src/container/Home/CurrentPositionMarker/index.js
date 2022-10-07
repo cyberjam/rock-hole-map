@@ -23,7 +23,7 @@ function CurrentPositionMarker({ state, setState }) {
                         isLoading: false,
                     }));
                 },
-                { enableHighAccuracy: false, maximumAge: 10000, timeout: 5000 },
+                { enableHighAccuracy: true, maximumAge: 10000, timeout: 5000 },
             );
         } else {
             // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다

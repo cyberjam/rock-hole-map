@@ -60,6 +60,7 @@ export default function Home({ spreadSheetData }) {
                     })}
                 </NaverMap>
             </main>
+            <p>{currentPositionState.center}</p>
         </div>
     );
 }

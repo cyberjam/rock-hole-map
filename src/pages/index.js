@@ -47,12 +47,14 @@ export default function Home({ spreadSheetData }) {
                         onToggleClick={handleDrawerEvent}
                     /> */}
 
-                    <CurrentPositionMarker
-                        state={currentPositionState}
-                        setState={setCurrentPositionState}
-                        locationId={locationId}
-                        setLocationId={setLocationId}
-                    ></CurrentPositionMarker>
+                    {currentPositionState.center && (
+                        <CurrentPositionMarker
+                            state={currentPositionState}
+                            setState={setCurrentPositionState}
+                            locationId={locationId}
+                            setLocationId={setLocationId}
+                        ></CurrentPositionMarker>
+                    )}
 
                     {HomeBucket.map((data) => {
                         return (

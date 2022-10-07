@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react';
 import Marker from '../../../components/NaverMap/Marker';
 
-function CurrentPositionMarker() {
+function CurrentPositionMarker({ locationId, setLocationId }) {
     const [state, setState] = useState({
         center: {
             lat: 33.0,
@@ -11,10 +11,10 @@ function CurrentPositionMarker() {
         isLoading: true,
     });
 
-    const findMyLocation = async () => {
+    const findMyLocation = () => {
         if (navigator.geolocation) {
             // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-            navigator.geolocation.watchPosition(
+            const watchPositionId = navigator.geolocation.watchPosition(
                 (position) => {
                     const center = {
                         lat: position.coords.latitude, // 위도
@@ -22,10 +22,11 @@ function CurrentPositionMarker() {
                     };
                     setState((prev) => ({
                         ...prev,
+                        id: locationId,
                         center,
                         isLoading: false,
                     }));
-                    alert(state.center.lat);
+                    alert(position.coords.latitude);
                 },
                 (err) => {
                     setState((prev) => ({
@@ -36,6 +37,8 @@ function CurrentPositionMarker() {
                 },
                 { enableHighAccuracy: true, maximumAge: 10000, timeout: 5000 },
             );
+            alert(watchPositionId);
+            setLocationId(watchPositionId);
         } else {
             // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
             setState((prev) => ({

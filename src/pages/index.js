@@ -16,13 +16,15 @@ export default function Home({ spreadSheetData }) {
         return Object.values(spreadSheetData);
     }, []);
     const [currentPositionState, setCurrentPositionState] = useState({
+        id: 0,
         center: {
-            lat: 33.450701,
+            lat: 33.0,
             lng: 126.570667,
         },
         errMsg: null,
         isLoading: true,
     });
+    const [locationId, setLocationId] = useState(0);
 
     return (
         <div>
@@ -44,7 +46,13 @@ export default function Home({ spreadSheetData }) {
                         onToggleClick={handleDrawerEvent}
                     /> */}
 
-                    <CurrentPositionMarker></CurrentPositionMarker>
+                    <CurrentPositionMarker
+                        // state={currentPositionState}
+                        // setState={setCurrentPositionState}
+
+                        locationId={locationId}
+                        setLocationId={setLocationId}
+                    ></CurrentPositionMarker>
 
                     {HomeBucket.map((data) => {
                         return (

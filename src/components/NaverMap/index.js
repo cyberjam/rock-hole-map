@@ -37,7 +37,7 @@ NaverMap.defaultProps = {
     center: { lat: 36.435469, lng: 128.1582 },
     zoom: 11,
     width: '100vw',
-    height: '100vh',
+    height: '90vh',
 };
 
 export default NaverMap;

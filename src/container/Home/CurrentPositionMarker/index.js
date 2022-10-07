@@ -57,7 +57,7 @@ function CurrentPositionMarker({ state, setState, locationId, setLocationId }) {
         <>
             {' '}
             {state.center.lat}
-            {!state.isLoading && (
+            {!state.isLoading && state.center && (
                 <Marker
                     position={state.center}
                     src={'https://i.ibb.co/F4q5WKP/image.png'}

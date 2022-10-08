@@ -26,6 +26,10 @@ export default function Home({ spreadSheetData }) {
     });
     const [locationId, setLocationId] = useState(0);
 
+    const handleCurrentPosition = (positionInfo) => {
+        setCurrentPositionState((prev) => ({ ...prev, ...positionInfo }));
+    };
+
     return (
         <div>
             <Head>
@@ -38,7 +42,10 @@ export default function Home({ spreadSheetData }) {
                 src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_MAP_KEY}`}
             ></Script>
             <main>
-                <p>{currentPositionState.center.lat}</p>
+                <p>
+                    {currentPositionState.center.lat}{' '}
+                    {currentPositionState.center.lng}
+                </p>
                 <NaverMap>
                     {/* <Header /> */}
                     {/* <Drawer
@@ -50,7 +57,7 @@ export default function Home({ spreadSheetData }) {
                     {currentPositionState.center.lat && (
                         <CurrentPositionMarker
                             state={currentPositionState}
-                            setState={setCurrentPositionState}
+                            onPositionRender={handleCurrentPosition}
                             locationId={locationId}
                             setLocationId={setLocationId}
                         ></CurrentPositionMarker>

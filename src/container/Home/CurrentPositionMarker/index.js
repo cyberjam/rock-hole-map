@@ -11,53 +11,53 @@ function CurrentPositionMarker({ state, setState, locationId, setLocationId }) {
     //     isLoading: true,
     // });
 
-    // const findMyLocation = () => {
-    //     if (navigator.geolocation) {
-    //         // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-    //         const watchPositionId = navigator.geolocation.watchPosition(
-    //             (position) => {
-    //                 const center = {
-    //                     lat: position.coords.latitude, // 위도
-    //                     lng: position.coords.longitude, // 경도
-    //                 };
-    //                 setState((prev) => ({
-    //                     ...prev,
-    //                     id: locationId,
-    //                     center,
-    //                     isLoading: false,
-    //                 }));
-    //                 // alert(state.center.lat);
-    //             },
-    //             (err) => {
-    //                 setState((prev) => ({
-    //                     ...prev,
-    //                     errMsg: err.message,
-    //                     isLoading: false,
-    //                 }));
-    //             },
-    //             { enableHighAccuracy: true, maximumAge: 10000, timeout: 5000 },
-    //         );
-    //         // alert(watchPositionId);
-    //         setLocationId(watchPositionId);
-    //     } else {
-    //         // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-    //         setState((prev) => ({
-    //             ...prev,
-    //             errMsg: 'geolocation을 사용할수 없어요..',
-    //             isLoading: false,
-    //         }));
-    //     }
-    // };
+    const findMyLocation = () => {
+        if (navigator.geolocation) {
+            // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+            const watchPositionId = navigator.geolocation.watchPosition(
+                (position) => {
+                    const center = {
+                        lat: position.coords.latitude, // 위도
+                        lng: position.coords.longitude, // 경도
+                    };
+                    setState((prev) => ({
+                        ...prev,
+                        id: locationId,
+                        center,
+                        isLoading: false,
+                    }));
+                    // alert(state.center.lat);
+                },
+                (err) => {
+                    setState((prev) => ({
+                        ...prev,
+                        errMsg: err.message,
+                        isLoading: false,
+                    }));
+                },
+                { enableHighAccuracy: true, maximumAge: 10000, timeout: 5000 },
+            );
+            // alert(watchPositionId);
+            setLocationId(watchPositionId);
+        } else {
+            // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+            setState((prev) => ({
+                ...prev,
+                errMsg: 'geolocation을 사용할수 없어요..',
+                isLoading: false,
+            }));
+        }
+    };
 
-    // useEffect(() => {
-    //     findMyLocation();
-    // }, []);
+    useEffect(() => {
+        findMyLocation();
+    }, []);
 
     return (
         <>
             {' '}
             {state.center.lat}
-            {!state.isLoading && state.center.lat && (
+            {!state.isLoading && (
                 <Marker
                     position={state.center}
                     src={'https://i.ibb.co/F4q5WKP/image.png'}

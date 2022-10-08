@@ -4,6 +4,8 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
+        "https_dev": "node server.js",
+        "https_init": "sh init-https.sh",
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
